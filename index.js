@@ -2,8 +2,8 @@ export default function validate(string) {
   const report = Object.create( validate.prototype );
 
   return Object.assign(report, {
-      string: string,
       ok: true,
+      string: string,
       checks: [],
       errors: [],
   });
