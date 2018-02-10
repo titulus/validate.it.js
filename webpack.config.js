@@ -5,5 +5,8 @@ module.exports = {
   output: {
     filename: 'validate.it.js',
     path: path.resolve(__dirname, 'build'),
+    library: 'validateit',
+    libraryTarget: 'umd',
+    umdNamedDefine: true,
   }
 };
