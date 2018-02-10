@@ -8,5 +8,19 @@ module.exports = {
     library: 'validateit',
     libraryTarget: 'umd',
     umdNamedDefine: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env'],
+          }
+        }
+      }
+    ]
   }
 };
