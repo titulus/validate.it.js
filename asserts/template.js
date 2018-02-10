@@ -1,1 +1,1 @@
-export const template = (base, ...args) => args;
+export const template = (base, ...args) => ({base, args});
