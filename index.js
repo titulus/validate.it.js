@@ -1,10 +1,3 @@
-export default function validate(string) {
-  const report = Object.create( validate.prototype );
+const validate = require('./build/validate.it.js');
 
-  return Object.assign(report, {
-      ok: true,
-      string: string,
-      checks: [],
-      errors: [],
-  });
-};
+module.exports = validate;

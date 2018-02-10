@@ -1,13 +1,12 @@
 const path = require('path');
 
 module.exports = {
-  entry: './index.js',
+  entry: './lib/index.js',
   output: {
     filename: 'validate.it.js',
     path: path.resolve(__dirname, 'build'),
     library: 'validateit',
     libraryTarget: 'umd',
-    umdNamedDefine: true,
   },
   module: {
     rules: [
@@ -18,9 +17,11 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['env'],
+            plugins: ['add-module-exports'],
           }
         }
       }
     ]
-  }
+  },
+  watch: true,
 };
