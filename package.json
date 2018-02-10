@@ -4,6 +4,7 @@
   "description": "simple way to validate",
   "main": "index.js",
   "scripts": {
+    "start": "webpack"
   },
   "keywords": [
     "validation",
@@ -11,5 +12,8 @@
     "valid"
   ],
   "author": "Kuntsevich Andrei",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^3.10.0"
+  }
 }
