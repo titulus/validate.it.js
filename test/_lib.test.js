@@ -5,6 +5,7 @@ describe('validate', () => {
 
   describe('validate()', () => {
     it('should be an object', () => expect(validate()).to.be.a('object'));
+    it('should have methods from asserts', () => expect(validate()._template).to.be.a('function'));
     describe('.base', () => {
       it('should be own property', () => expect(validate()).to.have.ownPropertyDescriptor('base'));
       it('should be same as first argument', () => {
@@ -47,11 +48,54 @@ describe('validate', () => {
         expect(JSON.stringify(validate()._template(1)._template(2).errors)).to.equal('[{"args":[1]},{"args":[2]}]');
       });
     });
-    
+  });
 
-
-
-    it('should have methods from asserts', () => expect(validate()._template).to.be.a('function'));
-
+  describe('cases', () => {
+    describe('ok', () => {
+      it('no asserts', () => {
+        const result = validate();
+        expect(result.ok).to.be.true;
+        expect(result.errors).to.be.empty;
+      });
+      it('one assert', () => {
+        const result = validate()
+          ._template();
+        expect(result.ok).to.be.true;
+        expect(result.errors).to.be.empty;
+        expect(JSON.stringify(result.asserts)).to.equal('["_template"]');
+      });
+      it('several assert', () => {
+        const result = validate()
+          ._template()
+          ._template()
+          ._template();
+        expect(result.ok).to.be.true;
+        expect(result.errors).to.be.empty;
+        expect(result.asserts.length).to.equal(3);
+        expect(JSON.stringify(result.asserts)).to.equal('["_template","_template","_template"]');
+      });
+    });
+    describe('!ok', () => {
+      it('one assert', () => {
+        const result = validate()
+          ._template(null);
+        expect(result.ok).to.not.be.true;
+        expect(result.errors).to.not.be.empty;
+        expect(JSON.stringify(result.errors)).to.equal('[{"args":[null]}]');
+        expect(JSON.stringify(result.asserts)).to.equal('["_template"]');
+      });
+      it('several assert', () => {
+        const result = validate()
+          ._template(1)
+          ._template()
+          ._template('a');
+        expect(result.ok).to.not.be.true;
+        expect(result.errors).to.not.be.empty;
+        expect(result.errors.length).to.equal(2);
+        expect(JSON.stringify(result.errors)).to.equal('[{"args":[1]},{"args":["a"]}]');
+        expect(result.asserts.length).to.equal(3);
+        expect(JSON.stringify(result.asserts)).to.equal('["_template","_template","_template"]');
+      });
+    });
   });
 });
