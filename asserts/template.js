@@ -1,1 +1,0 @@
-module.exports = (base, ...args) => ({base, args});
