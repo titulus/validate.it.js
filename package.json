@@ -1,0 +1,15 @@
+{
+  "name": "validate-it",
+  "version": "0.1.0",
+  "description": "simple way to validate",
+  "main": "index.js",
+  "scripts": {
+  },
+  "keywords": [
+    "validation",
+    "validate",
+    "valid"
+  ],
+  "author": "Kuntsevich Andrei",
+  "license": "MIT"
+}
