@@ -4,7 +4,9 @@
   "description": "simple way to validate",
   "main": "index.js",
   "scripts": {
-    "start": "webpack"
+    "start": "webpack",
+    "test": "./node_modules/mocha/bin/mocha",
+    "tdd": "./node_modules/.bin/nodemon --exec 'npm test'"
   },
   "keywords": [
     "validation",
@@ -18,6 +20,9 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "mocha": "^5.0.0",
+    "nodemon": "^1.14.12",
     "webpack": "^3.10.0"
   }
 }

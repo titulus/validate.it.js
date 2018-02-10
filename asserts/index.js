@@ -1,1 +1,3 @@
-// export * from './template.js';
+module.exports = {
+  // template: require('./template'),
+};

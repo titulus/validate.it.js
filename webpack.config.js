@@ -17,10 +17,9 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['env'],
-            plugins: ['add-module-exports'],
           }
         }
-      }
+      },
     ]
   },
   watch: true,
