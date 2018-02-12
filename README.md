@@ -86,7 +86,7 @@ validate('')
 }
 ```
 ### Validation Report
-> "Unified validation report interface" - [@rumkin](https://github.com/rumkin) [Validation Report](https://github.com/rumkin/validation-report)
+> "Unified validation report interface" - [@rumkin](https://github.com/rumkin) / [Validation Report](https://github.com/rumkin/validation-report) . git
 
 ## Asserts
 
