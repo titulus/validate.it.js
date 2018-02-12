@@ -31,15 +31,15 @@ validate('Pa$$w0rd')
 ```
 
 ```js
-validate('bob!')
+validate('bob')
   .longerThan(5)
   .lessThan(100)
   .hasOnly('A-z\d');
 // -->
 {
   ok: false,
-  base: 'bob!',
-  asserts: ['longerThan', 'lessThan', 'hasOnly'],
+  base: 'bob',
+  asserts: ['longerThan', 'lessThan'],
   errors: [
     {
       path: [],
@@ -48,16 +48,6 @@ validate('bob!')
         length: 4,
         min: 5,
         message: 'less than 5 chars'
-      }
-    },
-    {
-      path: [],
-      rule: 'hasOnly',
-      details: {
-        expected: 'A-z\d',
-        found: '!',
-        position: 3,
-        mesage: "unexpeted char '!' found at position: 4"
       }
     }
   ]
