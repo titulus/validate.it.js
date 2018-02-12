@@ -23,7 +23,11 @@ module.exports = (base, ...args) => {
 
   // Return error if at least one argumets provided
   if (args.length > 0)
-    return {base, args}; // Design of this error object is unique. You don't need to reproduce it
+    return {
+      base,
+      args,
+      message: 'this is template assert',
+    }; // Design of this error object is unique. You don't need to reproduce it
 
   // "Validation" pass - return nothing
   return;

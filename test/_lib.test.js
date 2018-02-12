@@ -43,9 +43,9 @@ describe('validate', () => {
         expect(validate()._template()._template().errors).to.be.empty;
       });
       it('should be filled with errors', () => {
-        expect(JSON.stringify(validate()._template(null).errors)).to.equal('[{"args":[null]}]');
-        expect(JSON.stringify(validate()._template()._template(null)._template().errors)).to.equal('[{"args":[null]}]');
-        expect(JSON.stringify(validate()._template(1)._template(2).errors)).to.equal('[{"args":[1]},{"args":[2]}]');
+        expect(JSON.stringify(validate()._template(null).errors)).to.equal('[{"path":[],"rule":"_template","details":{"args":[null],"message":"this is template assert"}}]');
+        expect(JSON.stringify(validate()._template()._template(null)._template().errors)).to.equal('[{"path":[],"rule":"_template","details":{"args":[null],"message":"this is template assert"}}]');
+        expect(JSON.stringify(validate()._template(1)._template(2).errors)).to.equal('[{"path":[],"rule":"_template","details":{"args":[1],"message":"this is template assert"}},{"path":[],"rule":"_template","details":{"args":[2],"message":"this is template assert"}}]');
       });
     });
   });
@@ -81,7 +81,7 @@ describe('validate', () => {
           ._template(null);
         expect(result.ok).to.not.be.true;
         expect(result.errors).to.not.be.empty;
-        expect(JSON.stringify(result.errors)).to.equal('[{"args":[null]}]');
+        expect(JSON.stringify(result.errors)).to.equal('[{"path":[],"rule":"_template","details":{"args":[null],"message":"this is template assert"}}]');
         expect(JSON.stringify(result.asserts)).to.equal('["_template"]');
       });
       it('several assert', () => {
@@ -92,7 +92,7 @@ describe('validate', () => {
         expect(result.ok).to.not.be.true;
         expect(result.errors).to.not.be.empty;
         expect(result.errors.length).to.equal(2);
-        expect(JSON.stringify(result.errors)).to.equal('[{"args":[1]},{"args":["a"]}]');
+        expect(JSON.stringify(result.errors)).to.equal('[{"path":[],"rule":"_template","details":{"args":[1],"message":"this is template assert"}},{"path":[],"rule":"_template","details":{"args":["a"],"message":"this is template assert"}}]');
         expect(result.asserts.length).to.equal(3);
         expect(JSON.stringify(result.asserts)).to.equal('["_template","_template","_template"]');
       });
