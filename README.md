@@ -12,7 +12,7 @@ import validate from 'validate.it'
 ```
 
 # Usage
-Give him a string and call needed assertsment
+Give him a string and call needed assertsments
 ```js
 validate('Pa$$w0rd')
   .longerThan(5)
