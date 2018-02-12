@@ -13,13 +13,4 @@ describe('asserts/template', () => {
     it('on ("abc", "def")', () => expect(template("abc", "def")).to.be.ok);
     it('on ("abc", 1, 2, 3)', () => expect(template("abc", 1, 2, 3)).to.be.ok);
   });
-
-  describe('template( base? )', () => {
-    it('should be falsy if no base and args', () => expect(template()).to.not.be.ok);
-    it('should be falsy if no args', () => expect(template(true)).to.not.be.ok);
-  });
-  
-  describe('template( base, ... )', () => {
-    it('should be an object', () => expect(template(true, true)).to.be.a('object'));
-  });
 });
