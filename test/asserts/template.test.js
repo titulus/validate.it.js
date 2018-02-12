@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var template = require('../asserts/_template.js');
+var template = require('../../asserts/_template.js');
 describe('asserts/template', () => {
   it('should be a function', () => expect(template).to.be.a('function'));
 

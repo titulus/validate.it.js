@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var validate = require('../lib');
+var validate = require('../../lib');
 describe('validate', () => {
   it('should be a function', () => expect(validate).to.be.a('function'));
 

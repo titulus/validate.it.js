@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack",
-    "test": "./node_modules/mocha/bin/mocha",
+    "test": "./node_modules/mocha/bin/mocha --recursive",
     "tdd": "./node_modules/.bin/nodemon --exec 'npm test'"
   },
   "keywords": [

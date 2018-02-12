@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var hasNumbers = require('../asserts/hasNumbers.js');
+var hasNumbers = require('../../asserts/hasNumbers.js');
 describe('asserts/hasNumbers', () => {
   it('should be a function', () => expect(hasNumbers).to.be.a('function'));
 

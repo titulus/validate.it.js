@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var error2validateReport = require('../lib/error2validateReport.js');
+var error2validateReport = require('../../lib/error2validateReport.js');
 describe('error2validateReport', () => {
   it('should be a function', () => expect(error2validateReport).to.be.a('function'));
   it('should throw an error if called without rule and error', () => {
