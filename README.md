@@ -72,7 +72,22 @@ result = validation( base )
 * `base` *string|varios* - basis for validation
   * right now *validate.it* works only with simple sting bases. But if you know why and how to use it with other types of values - we can implement it.
 * `asserts` *array* - called asserts names in call order
-* `errors` *array* - [Validation Reports](https://github.com/rumkin/validation-report) for failed asserts
+* `errors` *array* - [Validation Reports](#validation-report) for failed asserts
+
+simpliest `result` you can get by calling `validation` without any assert
+```js
+validate('')
+// -->
+{
+  ok: true,
+  base: '',
+  asserts: [],
+  errors: []
+}
+```
+### Validation Report
+Idea by [@rumkin](https://github.com/rumkin). Default implementation in [Validation Report](https://github.com/rumkin/validation-report).
+> Unified validation report interface
 
 ## Asserts
 
