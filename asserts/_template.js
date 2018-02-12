@@ -9,9 +9,10 @@
  *     'noLatin symbol found' -> {symbol: 'Ы', pos: 3, message: 'noLatin symbol found'}
  *   simple strings will be converted into object with message property:
  *     'no noumbers found' -> {mesage: 'no noumbers found'}
- *   other results will be converted into empty object:
+ *   other results will be converted into object:
+ *     [1, 2, 3] -> {0: 1, 1: 2, 2: 3}
  *     true -> {}
- *     [1, 2, 3] -> {}
+ *     Function -> {}
  *
  * Feel free to design your error objects. Just use common sense.
  * Try to provide message string which can be displayed to user
