@@ -74,3 +74,8 @@ You can find assert template in `asserts/_template.js` + `test/asserts/template.
 When you are ready for pull request - make sure it has:
 * **tests** with `case` block
 * Description. (I will copy-paste it into API section of this doc)
+
+In dev process use:
+* `npm start` - build and watch for rebuild with [webpack](https://webpack.js.org)
+* `npm test` - run tests with [mocha](https://mochajs.org/) and [chai](http://chaijs.com)
+* `npm run tdd` - rerun tests on-change with [nodemon](https://nodemon.io)
