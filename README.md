@@ -12,7 +12,7 @@ import validate from 'validate.it'
 ```
 
 # Usage
-Give him a string and call needed assertsments
+Give him a string and call needed asserts
 ```js
 validate('Pa$$w0rd')
   .longerThan(5)
@@ -86,8 +86,7 @@ validate('')
 }
 ```
 ### Validation Report
-Idea by [@rumkin](https://github.com/rumkin). Default implementation in [Validation Report](https://github.com/rumkin/validation-report).
-> Unified validation report interface
+> "Unified validation report interface" - [@rumkin](https://github.com/rumkin) [Validation Report](https://github.com/rumkin/validation-report)
 
 ## Asserts
 
