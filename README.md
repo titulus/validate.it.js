@@ -33,8 +33,7 @@ validate('Pa$$w0rd')
 ```js
 validate('bob')
   .longerThan(5)
-  .lessThan(100)
-  .hasOnly('A-z\d');
+  .lessThan(100);
 // -->
 {
   ok: false,
