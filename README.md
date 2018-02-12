@@ -65,6 +65,15 @@ result = validation( base )
 * **Result** is a *result* of validation in clean readable format.
 
 ## Result
+`result` is just a [DTO](https://en.wikipedia.org/wiki/Data_transfer_object) with params:
+* `ok` *bool* - status of validation
+  * `true` - validation passed
+  * `false` - validation fails
+* `base` *string|varios* - basis for validation
+  * right now *validate.it* works only with simple sting bases. But if you know why and how to use it with other types of values - we can implement it.
+* `asserts` *array* - called asserts names in call order
+* `errors` *array* - [Validation Reports](https://github.com/rumkin/validation-report) for failed asserts
+
 ## Asserts
 
 # Contribute
