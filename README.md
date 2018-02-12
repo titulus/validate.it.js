@@ -60,11 +60,9 @@ validate('bob!')
         mesage: "unexpeted char '!' found at position: 4"
       }
     }
-  ],
+  ]
 }
 ```
-
-Of course if some assertment fails - `ok` will be `false` and `errors` will contain errors
 
 # API
 ## Return
