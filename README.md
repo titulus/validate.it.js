@@ -88,6 +88,25 @@ validate('')
 ### Validation Report
 > "Unified validation report interface" - [@rumkin](https://github.com/rumkin) / [Validation Report](https://github.com/rumkin/validation-report) . git
 
+This is a DTO used as error objects in `errors` array. Every VR contains:
+* `path` *array* - empty array `[]`
+* `rule` *string* - name of assert
+* `details` *object* - object with non-stardartized params describes reason of failure.
+  * `details.message` *sting* - enduser oriented error description.
+
+Example
+```js
+{
+  path: [],
+  rule: 'longerThan',
+  details: {
+    length: 4,
+    min: 5,
+    message: 'less than 5 chars'
+  }
+}
+```
+
 ## Asserts
 
 # Contribute
