@@ -54,7 +54,17 @@ validate('bob')
 ```
 
 # API
-## Return
+
+`validation` - is a function of single argument called `base`. It returns **result** described below. *Result* has methods called **asserts**, which returns mutated *result* - so you can call chains of asserts. Like
+```js
+result = validation( base )
+  .assert()
+  .anotherAssert( argument );
+```
+* **Assert** is a step of validation process. It checks `base` by specified rule.
+* **Result** is a *result* of validation in clean readable format.
+
+## Result
 ## Asserts
 
 # Contribute
