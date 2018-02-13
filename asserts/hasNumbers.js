@@ -1,7 +1,3 @@
-module.exports = (base, ...args) => {
-  const valid = /\d/.test('' + base);
-  if (!valid)
-    return `${base} has no Numbers`;
+const has = require('./has.js');
 
-  return;
-};
+module.exports = base => has(base,'\\d');
