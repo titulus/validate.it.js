@@ -4,7 +4,7 @@
  *   *ags - other arguments used in validation process
  * 
  * It should return nothing if assertsment pass. And other values if not.
- *   should return meaningfull object instead of simple string:
+ *   should return meaningfull object instead of simple string if available:
  *     'longer than 5 symbols' -> {length: 10, max: 5, message: 'longer than 5 symbols'}
  *     'noLatin symbol found' -> {symbol: 'Ы', pos: 3, message: 'noLatin symbol found'}
  *   simple strings will be converted into object with message property:
