@@ -1,11 +1,12 @@
 const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   entry: './lib/index.js',
   output: {
     filename: 'validate.it.js',
     path: path.resolve(__dirname, 'build'),
-    library: 'validateit',
+    library: 'validate',
     libraryTarget: 'umd',
   },
   module: {
@@ -22,5 +23,8 @@ module.exports = {
       },
     ]
   },
+  plugins: [
+    new UglifyJsPlugin(),
+  ],
   watch: true,
 };
