@@ -5,9 +5,7 @@ module.exports = base => {
   const error = has(base,pattern);
   if (error)
     return {
-      string: base,
-      pattern,
-      found: false,
+      ...error,
       message: `"${base}" has no numbers`,
     };
 
