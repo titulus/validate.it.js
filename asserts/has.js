@@ -5,13 +5,13 @@ module.exports = (base, pattern) => {
     throw new Error('pattern must be specified');
 
   const regexp = new RegExp('' + pattern);
-  const error = match(base, regexp);
-  if (error)
+  const found = regexp.test('' + base);
+  if (!found)
     return {
       string: base,
       pattern,
       found: false,
-      message: `"${pattern}" not found in "${base}"`
+      message: `"${pattern}" not found in "${base}"`,
     };
 
   return;
