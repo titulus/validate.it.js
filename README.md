@@ -17,15 +17,12 @@ Give him a string and call needed asserts
 validate('Pa$$w0rd')
   .longerThan(5)
   .lessThan(100)
-  .hasUpperCase()
-  .hasLowerCase()
-  .hasNumbers()
-  .hasExtraChars();
+  .hasNumbers();
 // -->
 {
   ok: true,
   base: 'Pa$$w0rd',
-  asserts: ['longerThan', 'lessThan','hasUpperCase','hasLowerCase','hasNumbers','hasExtraChars'],
+  asserts: ['longerThan', 'lessThan', 'hasNumbers'],
   errors: []
 }
 ```
