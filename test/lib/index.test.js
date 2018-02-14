@@ -50,6 +50,20 @@ describe('validate', () => {
     });
   });
 
+  describe('.extend', () => {
+    it('class validate has static method .extend', () => {
+      expect(validate).to.have.ownPropertyDescriptor('extend');
+      expect(validate.extend).to.be.a('function');
+    });
+    it('create named method', () => {
+      expect(validate.prototype).to.not.have.ownPropertyDescriptor('_test');
+      validate.extend('_test', () => null);
+      expect(validate.prototype).to.have.ownPropertyDescriptor('_test');
+      expect(validate.prototype._test).to.be.a('function');
+      // rest testing in runAssertAsMethod.test
+    });
+  });
+
   describe('cases', () => {
     describe('ok', () => {
       it('no asserts', () => {
