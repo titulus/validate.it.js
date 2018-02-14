@@ -58,6 +58,8 @@ result = validation( base )
   .assert()
   .anotherAssert( argument );
 ```
+> Note. All asserts combined in **AND** logic way. So if any of asserts fails - validation fails
+
 * **Assert** is a step of validation process. It checks `base` by specified rule.
 * **Result** is a *result* of validation in clean readable format.
 
