@@ -1,0 +1,1 @@
+module.exports = (base, func) => func(base);
