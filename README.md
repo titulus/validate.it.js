@@ -108,6 +108,24 @@ Example
 
 ## Asserts
 
+### .has
+```js
+.has( pattern )
+```
+Check that `pattern` present in `base`.
+* `pattern` - just regexp pattern. So you can use as pattern`'a'`, `'1'`, `'\\d'`, `[a-z]` etc.
+
+examples
+```js
+validate('abc123').has('a').ok === true;
+validate('abc123').has('c1').ok === true;
+validate('abc123').has('\\d').ok === true;
+
+validate('abc123').has('d').ok === false;
+validate('abc123').has('a1').ok === false;
+validate('abc123').has('\\s').ok === false;
+```
+
 # Contribute
 You know another usefull assert? Fill free to pull request here.
 You can find assert template in `asserts/_template.js` + `test/asserts/template.test.js`. Use it for creating other.
