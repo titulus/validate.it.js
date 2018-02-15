@@ -1,8 +1,8 @@
 const has = require('./has.js');
 
 module.exports = base => {
-  const pattern = '\\d';
-  const error = has(base,pattern);
+  const numbers = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 ];
+  const error = has(base, ...numbers);
   if (error)
     return {
       ...error,

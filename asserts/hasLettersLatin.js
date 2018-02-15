@@ -1,8 +1,13 @@
 const has = require('./has.js');
 
 module.exports = base => {
-  const pattern = '[A-Za-z]';
-  const error = has(base,pattern);
+  const ascii_lowercase = 'abcdefghijklmnopqrstuvwxyz';
+  const ascii_uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const letters = [
+    ...ascii_lowercase.split(''),
+    ...ascii_uppercase.split(''),
+  ];
+  const error = has(base, ...letters);
   if (error)
     return {
       ...error,
