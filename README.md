@@ -108,6 +108,9 @@ Example
 
 ## Asserts
 
+* [.has( pattern )](#has) - Check that `pattern` present in `base`.
+* [.hasNo( pattern )](#hasno) - Check that `pattern` not present in `base`.
+
 ### .has
 ```js
 .has( pattern )
@@ -124,6 +127,23 @@ validate('abc123').has('\\d').ok === true;
 validate('abc123').has('d').ok === false;
 validate('abc123').has('a1').ok === false;
 validate('abc123').has('\\s').ok === false;
+```
+### .hasNo
+```js
+.hasNo( pattern )
+```
+Check that `pattern` not present in `base`.
+* `pattern` - just regexp pattern. So you can use as pattern`'a'`, `'1'`, `'\\d'`, `[a-z]` etc.
+
+examples
+```js
+validate('abc123').hasNo('d').ok === true;
+validate('abc123').hasNo('a1').ok === true;
+validate('abc123').hasNo('\\s').ok === true;
+
+validate('abc123').hasNo('a').ok === false;
+validate('abc123').hasNo('c1').ok === false;
+validate('abc123').hasNo('\\d').ok === false;
 ```
 
 # Contribute
