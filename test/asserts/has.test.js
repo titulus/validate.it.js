@@ -17,4 +17,15 @@ describe('asserts/has', () => {
     it('on substring', () => expect(has('abc123', 'd2')).to.be.ok);
     it('on set (all not present)', () => expect(has('abc123', 'e', 4, 'd2')).to.be.ok);
   });
+
+  describe('returned object', () => {
+    it('.string', () => expect(has('abc123', 'e').string).to.equal('abc123'));
+    it('.subStrings', () => {
+      const result = has('abc123', 'e', 4, 'd2');
+      expect(result).to.have.ownPropertyDescriptor('subStrings');
+      expect(JSON.stringify(result.subStrings)).to.equal('["e",4,"d2"]');
+    });
+    it('.found === false', () => expect(has('abc123', 'e').found).to.be.false);
+    it('.message', () => expect(has('abc123', 'e').message).to.be.ok);
+  })
 });
