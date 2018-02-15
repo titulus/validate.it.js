@@ -4,8 +4,9 @@ module.exports = (base, pattern) => {
   if (!pattern)
     throw new Error('pattern must be specified');
 
-  const regexp = new RegExp('' + pattern);
-  const found = regexp.test('' + base);
+  const baseString = '' + base;
+
+  const found = baseString.includes(pattern);
   if (!found)
     return {
       string: base,
