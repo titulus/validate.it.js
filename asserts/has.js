@@ -7,23 +7,20 @@ module.exports = (base, ...subStrings) => {
   const string = '' + base;
 
   let found = false;
-  const founded = [];
   for (const subString of subStrings) {
-    const position = string.indexOf(subString);
-    if (position === -1)
+    if (!string.includes(subString))
       continue;
 
     found = true;
-    founded.push({subString, position});
+    break;
   };
 
   if (!found)
     return {
       string,
       subStrings,
-      founded,
       found,
-      message: `any of ${JSON.stringify(subStrings)} not found in "${string}"`,
+      message: `not any of ${JSON.stringify(subStrings)} found in "${string}"`,
     };
 
   return;
