@@ -69,7 +69,7 @@ result = validation( base )
   * `true` - validation passed
   * `false` - validation fails
 * `base` *string|varios* - basis for validation
-  * right now *validate.it* works only with simple sting bases. But if you know why and how to use it with other types of values - we can implement it.
+  * right now *validate.it* works only with simple string bases. But if you know why and how to use it with other types of values - we can implement it.
 * `asserts` *array* - called asserts names in call order
 * `errors` *array* - [Validation Reports](#validation-report) for failed asserts
 
@@ -91,7 +91,7 @@ This is a DTO used as error objects in `errors` array. Every VR contains:
 * `path` *array* - empty array `[]`
 * `rule` *string* - name of assert
 * `details` *object* - object with non-stardartized params describes reason of failure.
-  * `details.message` *sting* - enduser oriented error description.
+  * `details.message` *string* - enduser oriented error description.
 
 Example
 ```js
@@ -131,7 +131,7 @@ You know another usefull assert? Fill free to pull request here.
 You can find assert template in `asserts/_template.js` + `test/asserts/template.test.js`. Use it for creating other.
 
 When you are ready for pull request - make sure it has:
-* **tests** with `case` block
+* **tests** with `ok` and `!ok` sections
 * Description. (I will copy-paste it into API section of this doc)
 
 In dev process use:
