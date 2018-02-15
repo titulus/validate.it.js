@@ -148,7 +148,7 @@ validate('abc123').hasNo('\\d').ok === false;
 
 # Contribute
 You know another usefull assert? Fill free to pull request here.
-You can find assert template in `asserts/_template.js` + `test/asserts/template.test.js`. Use it for creating other.
+You can find assert template in [`asserts/_template.js`](https://github.com/titulus/validate.it/blob/master/asserts/_template.js) + [`test/asserts/template.test.js`](https://github.com/titulus/validate.it/blob/master/test/asserts/template.test.js). Use it for creating other.
 
 When you are ready for pull request - make sure it has:
 * **tests** with `ok` and `!ok` sections
