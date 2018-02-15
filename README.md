@@ -110,6 +110,7 @@ Example
 
 * [.has( pattern )](#has) - Check that `pattern` present in `base`.
 * [.hasNo( pattern )](#hasno) - Check that `pattern` not present in `base`.
+* [.match( regexp )](#match) - Check `base` for matching `regexp`.
 
 ### .has
 ```js
@@ -144,6 +145,21 @@ validate('abc123').hasNo('\\s').ok === true;
 validate('abc123').hasNo('a').ok === false;
 validate('abc123').hasNo('c1').ok === false;
 validate('abc123').hasNo('\\d').ok === false;
+```
+
+### .match
+```js
+.match( regexp )
+```
+Check `base` for matching `regexp`.
+
+examples
+```js
+validate('abc123').match(/\d/).ok === true;
+validate('abc123').match(/^a.*3$/).ok === true;
+
+validate('abc123').match(/\s/).ok === false;
+validate('abc123').match(/^d.*6$/).ok === false;
 ```
 
 # Contribute
