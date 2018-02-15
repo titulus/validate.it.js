@@ -58,6 +58,8 @@ result = validation( base )
   .assert()
   .anotherAssert( argument );
 ```
+> Note. All asserts combined in **AND** logic way. So if any of asserts fails - validation fails
+
 * **Assert** is a step of validation process. It checks `base` by specified rule.
 * **Result** is a *result* of validation in clean readable format.
 
@@ -67,7 +69,7 @@ result = validation( base )
   * `true` - validation passed
   * `false` - validation fails
 * `base` *string|varios* - basis for validation
-  * right now *validate.it* works only with simple sting bases. But if you know why and how to use it with other types of values - we can implement it.
+  * right now *validate.it* works only with simple string bases. But if you know why and how to use it with other types of values - we can implement it.
 * `asserts` *array* - called asserts names in call order
 * `errors` *array* - [Validation Reports](#validation-report) for failed asserts
 
@@ -89,7 +91,7 @@ This is a DTO used as error objects in `errors` array. Every VR contains:
 * `path` *array* - empty array `[]`
 * `rule` *string* - name of assert
 * `details` *object* - object with non-stardartized params describes reason of failure.
-  * `details.message` *sting* - enduser oriented error description.
+  * `details.message` *string* - enduser oriented error description.
 
 Example
 ```js
@@ -106,12 +108,66 @@ Example
 
 ## Asserts
 
+* [.has( pattern )](#has) - Check that `pattern` present in `base`.
+* [.hasNo( pattern )](#hasno) - Check that `pattern` not present in `base`.
+* [.match( regexp )](#match) - Check `base` for matching `regexp`.
+
+### .has
+```js
+.has( pattern )
+```
+Check that `pattern` present in `base`.
+* `pattern` - just regexp pattern. So you can use as pattern`'a'`, `'1'`, `'\\d'`, `[a-z]` etc.
+
+examples
+```js
+validate('abc123').has('a').ok === true;
+validate('abc123').has('c1').ok === true;
+validate('abc123').has('\\d').ok === true;
+
+validate('abc123').has('d').ok === false;
+validate('abc123').has('a1').ok === false;
+validate('abc123').has('\\s').ok === false;
+```
+### .hasNo
+```js
+.hasNo( pattern )
+```
+Check that `pattern` not present in `base`.
+* `pattern` - just regexp pattern. So you can use as pattern`'a'`, `'1'`, `'\\d'`, `[a-z]` etc.
+
+examples
+```js
+validate('abc123').hasNo('d').ok === true;
+validate('abc123').hasNo('a1').ok === true;
+validate('abc123').hasNo('\\s').ok === true;
+
+validate('abc123').hasNo('a').ok === false;
+validate('abc123').hasNo('c1').ok === false;
+validate('abc123').hasNo('\\d').ok === false;
+```
+
+### .match
+```js
+.match( regexp )
+```
+Check `base` for matching `regexp`.
+
+examples
+```js
+validate('abc123').match(/\d/).ok === true;
+validate('abc123').match(/^a.*3$/).ok === true;
+
+validate('abc123').match(/\s/).ok === false;
+validate('abc123').match(/^d.*6$/).ok === false;
+```
+
 # Contribute
 You know another usefull assert? Fill free to pull request here.
-You can find assert template in `asserts/_template.js` + `test/asserts/template.test.js`. Use it for creating other.
+You can find assert template in [`asserts/_template.js`](https://github.com/titulus/validate.it/blob/master/asserts/_template.js) + [`test/asserts/template.test.js`](https://github.com/titulus/validate.it/blob/master/test/asserts/template.test.js). Use it for creating other.
 
 When you are ready for pull request - make sure it has:
-* **tests** with `case` block
+* **tests** with `ok` and `!ok` sections
 * Description. (I will copy-paste it into API section of this doc)
 
 In dev process use:
