@@ -1,18 +1,26 @@
 const match = require('./match.js');
 
-module.exports = (base, pattern) => {
-  if (!pattern)
-    throw new Error('pattern must be specified');
+module.exports = (base, ...subStrings) => {
+  if (subStrings.length === 0)
+    throw new Error('at least 1 substring must be specified');
 
-  const baseString = '' + base;
+  const string = '' + base;
 
-  const found = baseString.includes(pattern);
+  let found = false;
+  for (const subString of subStrings) {
+    if (!string.includes(subString))
+      continue;
+
+    found = true;
+    break;
+  };
+
   if (!found)
     return {
-      string: base,
-      pattern,
+      string,
+      subStrings,
       found: false,
-      message: `"${pattern}" not found in "${base}"`,
+      message: `${JSON.stringify(subStrings)} not found in "${string}"`,
     };
 
   return;
