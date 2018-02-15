@@ -17,4 +17,20 @@ describe('asserts/hasNo', () => {
     it('on set (all present)', () => expect(hasNo('abc123', 'b', 2, 'c1')).to.be.ok);
     it('on set (one of present)', () => expect(hasNo('abc123', 'b', 4)).to.be.ok);
   });
+
+  describe('returned object', () => {
+    it('.string', () => expect(hasNo('abc123', 'b').string).to.equal('abc123'));
+    it('.subStrings', () => {
+      const result = hasNo('abc123', 'b', 2, 'c1');
+      expect(result).to.have.ownPropertyDescriptor('subStrings');
+      expect(JSON.stringify(result.subStrings)).to.equal('["b",2,"c1"]');
+    });
+    it('.founded', () => {
+      const result = hasNo('abc123', 'b', 4);
+      expect(result).to.have.ownPropertyDescriptor('founded');
+      expect(JSON.stringify(result.founded)).to.equal('[{"subString":"b","position":1}]');
+    });
+    it('.found === true', () => expect(hasNo('abc123', 'b').found).to.be.true);
+    it('.message', () => expect(hasNo('abc123', 'b').message).to.be.ok);
+  });
 });

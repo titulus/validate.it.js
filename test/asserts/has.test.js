@@ -27,5 +27,5 @@ describe('asserts/has', () => {
     });
     it('.found === false', () => expect(has('abc123', 'e').found).to.be.false);
     it('.message', () => expect(has('abc123', 'e').message).to.be.ok);
-  })
+  });
 });
