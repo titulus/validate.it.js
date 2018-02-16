@@ -151,21 +151,35 @@ validate('abc123').has('e2','e4').errors[0].details
 }
 ```
 ### .hasNo
+Check that any `subString` unpresent in `base`.
+
+Syntax:
 ```js
-.hasNo( pattern )
+.hasNo( subString [, subString2...] )
 ```
-Check that `pattern` not present in `base`.
-* `pattern` - just regexp pattern. So you can use as pattern`'a'`, `'1'`, `'\\d'`, `[a-z]` etc.
-
-examples
+Fail details:
 ```js
-validate('abc123').hasNo('d').ok === true;
-validate('abc123').hasNo('a1').ok === true;
-validate('abc123').hasNo('\\s').ok === true;
+{
+    string: base,
+    subStrings: [subString, subString2...],
+    found: true,
+    message: 'every of ["subString", "subString2"...] found in "base"'
+}
+```
+Examples:
+```js
+validate('abc123').has('e').ok === true;
+validate('abc123').has('c1','e4').ok === true;
 
-validate('abc123').hasNo('a').ok === false;
-validate('abc123').hasNo('c1').ok === false;
-validate('abc123').hasNo('\\d').ok === false;
+validate('abc123').has('b').ok === false;
+validate('abc123').has('a','b','c').errors[0].details
+// -->
+{
+    string: 'abc123',
+    subStrings: ['a','b','c'],
+    found: true,
+    message: 'every of ["a", "b", "c"] found in "abc123"'
+}
 ```
 
 ### .match
