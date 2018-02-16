@@ -5,21 +5,15 @@ module.exports = (base, ...args) => {
   const string = '' + base;
   const subStrings = args.map(argument => '' + argument);
 
-  const founded = [];
   for (const subString of subStrings) {
-    const position = string.indexOf(subString);
-
-    if (position === -1)
+    if (!string.includes(subString))
       return;
-
-    founded.push({subString, position});
   };
   
   return {
     string,
     subStrings,
-    founded,
     found: true,
-    message: `${JSON.stringify(founded.map(({substring}) => substring))} found in "${string}"`,
+    message: `every of ${JSON.stringify(subStrings)} found in "${string}"`,
   };
 };

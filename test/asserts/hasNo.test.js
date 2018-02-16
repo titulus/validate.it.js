@@ -25,11 +25,6 @@ describe('asserts/hasNo', () => {
       expect(result).to.have.ownPropertyDescriptor('subStrings');
       expect(JSON.stringify(result.subStrings)).to.equal('["b","2","c1"]');
     });
-    it('.founded', () => {
-      const result = hasNo('abc123', 'b', 2);
-      expect(result).to.have.ownPropertyDescriptor('founded');
-      expect(JSON.stringify(result.founded)).to.equal('[{"subString":"b","position":1},{"subString":"2","position":4}]');
-    });
     it('.found === true', () => expect(hasNo('abc123', 'b').found).to.be.true);
     it('.message', () => expect(hasNo('abc123', 'b').message).to.be.ok);
   });

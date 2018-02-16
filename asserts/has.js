@@ -5,22 +5,16 @@ module.exports = (base, ...args) => {
   const string = '' + base;
   const subStrings = args.map(argument => '' + argument);
 
-  let found = false;
   for (const subString of subStrings) {
-    if (!string.includes(subString))
-      continue;
-
-    found = true;
-    break;
+    if (string.includes(subString))
+      return;
   };
 
-  if (!found)
-    return {
-      string,
-      subStrings,
-      found,
-      message: `not any of ${JSON.stringify(subStrings)} found in "${string}"`,
-    };
+  return {
+    string,
+    subStrings,
+    found: false,
+    message: `not any of ${JSON.stringify(subStrings)} found in "${string}"`,
+  };
 
-  return;
 };
