@@ -117,6 +117,8 @@ Example
 
 * [.has( subString [, subString2...] )](#has) - Check that any `subString` present in `base`.
 * [.hasNo( pattern [, pattern2...] )](#hasno) - Check that any `subString` unpresent in `base`.
+* [.hasNumbers()](#hasNumbers) - Check that any **number** present in `base`.
+* [.hasLettersLatin()](#hasLettersLatin) - Check that any **latin letter** present in `base`.
 * [.match( regexp [, regexp2...] )](#match) - Check `base` for matching any `regexp`.
 
 ### .has
@@ -141,14 +143,7 @@ validate('abc123').has('a').ok === true;
 validate('abc123').has('c1','e4').ok === true;
 
 validate('abc123').has('d').ok === false;
-validate('abc123').has('e2','e4').errors[0].details
-// -->
-{
-    string: 'abc123',
-    subStrings: ['e2','e4'],
-    found: false,
-    message: 'not any of ["e2", "e4"] found in "abc123"'
-}
+validate('abc123').has('e2','e4').ok === false;
 ```
 ### .hasNo
 Check that any `subString` unpresent in `base`.
@@ -172,16 +167,52 @@ validate('abc123').has('e').ok === true;
 validate('abc123').has('c1','e4').ok === true;
 
 validate('abc123').has('b').ok === false;
-validate('abc123').has('a','b','c').errors[0].details
-// -->
+validate('abc123').has('a','b','c').ok === false;
+```
+### .hasNumbers
+Check that any **number** present in `base`.
+
+Syntax:
+```js
+.hasNumbers()
+```
+Fail details:
+```js
 {
-    string: 'abc123',
-    subStrings: ['a','b','c'],
-    found: true,
-    message: 'every of ["a", "b", "c"] found in "abc123"'
+    string: base,
+    subStrings: ["1","2","3","4","5","6","7","8","9","0"],
+    found: false,
+    message: '"base" has no numbers'
 }
 ```
+Examples:
+```js
+validate('abc123').hasNumbers().ok === true;
 
+validate('abc').hasNumbers().ok === false;
+```
+### .hasLettersLatin
+Check that any **latin letter** present in `base`.
+
+Syntax:
+```js
+.hasLettersLatin()
+```
+Fail details:
+```js
+{
+    string: base,
+    subStrings: ["a","b","c", ... "X","Y","Z"],
+    found: false,
+    message: '"base" has no latin letters'
+}
+```
+Examples:
+```js
+validate('abc123').hasLettersLatin().ok === true;
+
+validate('123').hasLettersLatin().ok === false;
+```
 ### .match
 Check `base` for matching any `regexp`.
 
@@ -195,7 +226,7 @@ Fail details:
     string: base,
     patterns: ['pattern', 'pattern2'...],
     match: false,
-    message: '"base" don't match any of ["pattern", "pattern2"...]'
+    message: '"base" don\'t match any of ["pattern", "pattern2"...]'
 }
 ```
 Examples:
@@ -204,14 +235,7 @@ validate('abc123').match(/\d/).ok === true;
 validate('abc123').match(/^a.*3$/).ok === true;
 
 validate('abc123').match(/\s/).ok === false;
-validate('abc123').match(/\s/, /def456/).errors[0].details
-// -->
-{
-    string: 'abc123',
-    patterns: ['/\\s/', '/def456/'...],
-    match: false,
-    message: '"abc123" don't match any of ["/\\\\s/", "//def456"...]'
-}
+validate('abc123').match(/\s/, /def456/).ok === false;
 ```
 
 # Contribute
