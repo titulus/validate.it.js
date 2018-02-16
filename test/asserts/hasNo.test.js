@@ -8,7 +8,7 @@ describe('asserts/hasNo', () => {
     it('on digit', () => expect(hasNo('abc123', 4)).to.not.be.ok);
     it('on substring', () => expect(hasNo('abc123', 'd2')).to.not.be.ok);
     it('on set (all not present)', () => expect(hasNo('abc123', 'e', 4, 'd2')).to.not.be.ok);
-    it('on set (one of present)', () => expect(hasNo('abc123', 'b', 4)).to.not.be.ok);
+    it('on set (one of not present)', () => expect(hasNo('abc123', 'b', 4)).to.not.be.ok);
   });
 
   describe('!ok', () => {
