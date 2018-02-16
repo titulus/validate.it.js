@@ -57,7 +57,8 @@ validate('bob')
 ```js
 result = validation( base )
   .assert()
-  .anotherAssert( argument );
+  .anotherAssert( argument )
+  .yetAnotherAssert( set, of, arguments );
 ```
 > **Note**
 >
