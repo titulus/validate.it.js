@@ -15,35 +15,36 @@ import validate from 'validate.it'
 Give him a string and call needed asserts
 ```js
 validate('Pa$$w0rd')
-  .longerThan(5)
-  .lessThan(100)
-  .hasNumbers();
+  .hasLettersLatin()
+  .hasNumbers()
+  .has("!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+");
 // -->
 {
   ok: true,
   base: 'Pa$$w0rd',
-  asserts: ['longerThan', 'lessThan', 'hasNumbers'],
+  asserts: ['hasLettersLatin', 'hasNumbers', 'has'],
   errors: []
 }
 ```
 
 ```js
 validate('bob')
-  .longerThan(5)
-  .lessThan(100);
+  .hasLettersLatin()
+  .hasNumbers();
 // -->
 {
   ok: false,
   base: 'bob',
-  asserts: ['longerThan', 'lessThan'],
+  asserts: ['hasLettersLatin', 'hasNumbers'],
   errors: [
     {
       path: [],
-      rule: 'longerThan',
+      rule: 'hasNumbers',
       details: {
-        length: 4,
-        min: 5,
-        message: 'less than 5 chars'
+        string: 'bob',
+        subStrings: [1,2,3,4,5,6,7,8,9],
+        found: false,
+        message: '"bob" has no numbers'
       }
     }
   ]
