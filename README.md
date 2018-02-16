@@ -289,7 +289,7 @@ validate.extend('hasSmile', (base, australian) => {
     const smiles = [':)', ':(', ';)'];
     const australianSmiles = ['(:', '):', '(;'];
     const checkSmiles = australian ? australianSmiles : smiles;
-    const smileFound = checkSmiles.any(base.includes);
+    const smileFound = checkSmiles.some(smile => base.includes(smile));
     if (smileFound)
         return;
     
