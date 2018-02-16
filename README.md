@@ -305,6 +305,7 @@ validate('hello').hasSmile().errors[0].details;
   message: 'no smiles in "hello"'
 }
 ```
+> Psst.. Do not use it a lot. [Contribute](#contribute) instead!
 
 # Contribute
 You know another usefull assert? Fill free to pull request here.
