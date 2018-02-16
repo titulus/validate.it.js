@@ -21,14 +21,15 @@
 // This template assert passes if no arguments provided. Fails otherwise.
 module.exports = (base, ...args) => {
 
-  // Return error if at least one argumets provided
-  if (args.length > 0)
-    return {
-      base,
-      args,
-      message: 'this is template assert',
-    }; // Design of this error object is unique. You don't need to reproduce it
-
   // "Validation" pass - return nothing
-  return;
+  if (args.length === 0) {
+    return;
+  }
+
+  // Return error if at least one argumets provided
+  return {
+    base,
+    args,
+    message: 'this is template assert',
+  }; // Design of this error object is unique. You don't need to reproduce it
 };
