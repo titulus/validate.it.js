@@ -134,7 +134,7 @@ validate('abc123').has('a').ok === true;
 validate('abc123').has('c1','e4').ok === true;
 
 validate('abc123').has('d').ok === false;
-validate('abc123').has('e2','e4').details -- {
+validate('abc123').has('e2','e4').errors[0].details -- {
     string: 'abc123',
     subStrings: ['e2','e4'],
     found: false,
