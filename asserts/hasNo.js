@@ -1,28 +1,25 @@
-module.exports = (base, ...subStrings) => {
-  if (subStrings.length === 0)
+module.exports = (base, ...args) => {
+  if (args.length === 0)
     throw new Error('at least 1 substring must be specified');
 
   const string = '' + base;
+  const subStrings = args.map(argument => '' + argument);
 
-  let found = false;
   const founded = [];
   for (const subString of subStrings) {
     const position = string.indexOf(subString);
-    if (position === -1)
-      continue;
 
-    found = true;
+    if (position === -1)
+      return;
+
     founded.push({subString, position});
   };
-
-  if (found)
-    return {
-      string,
-      subStrings,
-      founded,
-      found,
-      message: `${JSON.stringify(founded.map(({substring}) => substring))} found in "${string}"`,
-    };
-
-  return;
+  
+  return {
+    string,
+    subStrings,
+    founded,
+    found: true,
+    message: `${JSON.stringify(founded.map(({substring}) => substring))} found in "${string}"`,
+  };
 };

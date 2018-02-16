@@ -8,6 +8,7 @@ describe('asserts/hasNo', () => {
     it('on digit', () => expect(hasNo('abc123', 4)).to.not.be.ok);
     it('on substring', () => expect(hasNo('abc123', 'd2')).to.not.be.ok);
     it('on set (all not present)', () => expect(hasNo('abc123', 'e', 4, 'd2')).to.not.be.ok);
+    it('on set (one of present)', () => expect(hasNo('abc123', 'b', 4)).to.not.be.ok);
   });
 
   describe('!ok', () => {
@@ -15,7 +16,6 @@ describe('asserts/hasNo', () => {
     it('on digit', () => expect(hasNo('abc123', 2)).to.be.ok);
     it('on substring', () => expect(hasNo('abc123', 'c1')).to.be.ok);
     it('on set (all present)', () => expect(hasNo('abc123', 'b', 2, 'c1')).to.be.ok);
-    it('on set (one of present)', () => expect(hasNo('abc123', 'b', 4)).to.be.ok);
   });
 
   describe('returned', () => {
@@ -23,12 +23,12 @@ describe('asserts/hasNo', () => {
     it('.subStrings', () => {
       const result = hasNo('abc123', 'b', 2, 'c1');
       expect(result).to.have.ownPropertyDescriptor('subStrings');
-      expect(JSON.stringify(result.subStrings)).to.equal('["b",2,"c1"]');
+      expect(JSON.stringify(result.subStrings)).to.equal('["b","2","c1"]');
     });
     it('.founded', () => {
-      const result = hasNo('abc123', 'b', 4);
+      const result = hasNo('abc123', 'b', 2);
       expect(result).to.have.ownPropertyDescriptor('founded');
-      expect(JSON.stringify(result.founded)).to.equal('[{"subString":"b","position":1}]');
+      expect(JSON.stringify(result.founded)).to.equal('[{"subString":"b","position":1},{"subString":"2","position":4}]');
     });
     it('.found === true', () => expect(hasNo('abc123', 'b').found).to.be.true);
     it('.message', () => expect(hasNo('abc123', 'b').message).to.be.ok);
