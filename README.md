@@ -1,14 +1,14 @@
-validate.it
+validate.it.js
 ====
 
 *Simple way to validate*
 
 # Installation
 ```bash
-npm install --save validate.it
+npm install --save validate.it.js
 ```
 ```js
-import validate from 'validate.it'
+import validate from 'validate.it.js'
 ```
 
 # Usage
