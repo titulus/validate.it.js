@@ -66,8 +66,8 @@ result = validation( base )
 >
 > Arguments in assert combined in **OR** logic way. So if any of arguments satisfies assert - assert passes.
 
-* [**Assert**](#asserts) - step of validation process. It checks `base` by specified rule.
 * [**Result**](#result) - *result* of validation in clean readable format.
+* [**Assert**](#asserts) - step of validation process. It checks `base` by specified rule.
 * [**.extend**](#extend) - static method allows you to add your own asserts.
 
 ## Result
