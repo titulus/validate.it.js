@@ -120,6 +120,7 @@ Example
 * [.hasNumbers()](#hasNumbers) - Check that any **number** present in `base`.
 * [.hasLettersLatin()](#hasLettersLatin) - Check that any **latin letter** present in `base`.
 * [.match( regexp [, regexp2...] )](#match) - Check `base` for matching any `regexp`.
+* [.eval( func )](#eval) - Calls function `func` with `base` as only argument. Fails if it returns something.
 
 ### .has
 Check that any `subString` present in `base`.
@@ -236,6 +237,37 @@ validate('abc123').match(/^a.*3$/).ok === true;
 
 validate('abc123').match(/\s/).ok === false;
 validate('abc123').match(/\s/, /def456/).ok === false;
+```
+### .eval
+Calls function `func` with `base` as only argument. Fails if it returns something.
+Syntax:
+```js
+.eval( func )
+```
+Any return of `func` (except of `undefined`) will be converted into `details` object and wrapped with [Validation Report](#validation-report). Simple strings will be placed as `.message` property:
+> `'no smiles found' -> {mesage: 'no smiles found'}`
+other results will be converted as is:
+> `{a: 1, b: '2'} -> {a: 1, b: '2'}`
+> `[1, 2, 3] -> {0: 1, 1: 2, 2: 3}`
+> `true -> {}`
+> `Function -> {}`
+
+Examples:
+```js
+validate('abc123').eval(() => {}).ok === true;
+validate('abc123').eval(base => base === ':)' : 'found you' ? undefined).ok === true;
+
+validate('abc123').eval(() => true).ok === false;
+validate('abc123').eval(() => 'some text').errors[0].details;
+// -->
+{
+  message: 'some text'
+}
+validate('abc123').eval(() => {some: 'text'}).errors[0].details;
+// -->
+{
+  some: 'text'
+}
 ```
 
 # Contribute
