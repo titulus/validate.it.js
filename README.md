@@ -60,7 +60,9 @@ result = validation( base )
   .anotherAssert( argument );
 ```
 > **Note**
+>
 > Asserts combined in **AND** logic way. So if any of asserts fails - validation fails.
+>
 > Arguments in assert combined in **OR** logic way. So if any of arguments satisfies assert - assert passes.
 
 * **Assert** is a step of validation process. It checks `base` by specified rule.
