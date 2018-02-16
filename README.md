@@ -116,8 +116,8 @@ Example
 ## Asserts
 
 * [.has( subString [, subString2...] )](#has) - Check that any `subString` present in `base`.
-* [.hasNo( pattern [, pattern2...] )](#hasno) - Check that `pattern` not present in `base`.
-* [.match( regexp )](#match) - Check `base` for matching `regexp`.
+* [.hasNo( pattern [, pattern2...] )](#hasno) - Check that any `subString` unpresent in `base`.
+* [.match( regexp [, regexp2...] )](#match) - Check `base` for matching any `regexp`.
 
 ### .has
 Check that any `subString` present in `base`.
@@ -183,18 +183,35 @@ validate('abc123').has('a','b','c').errors[0].details
 ```
 
 ### .match
-```js
-.match( regexp )
-```
-Check `base` for matching `regexp`.
+Check `base` for matching any `regexp`.
 
-examples
+Syntax:
+```js
+.match( regexp [, regexp2...] )
+```
+Fail details:
+```js
+{
+    string: base,
+    patterns: ['pattern', 'pattern2'...],
+    match: false,
+    message: '"base" don't match any of ["pattern", "pattern2"...]'
+}
+```
+Examples:
 ```js
 validate('abc123').match(/\d/).ok === true;
 validate('abc123').match(/^a.*3$/).ok === true;
 
 validate('abc123').match(/\s/).ok === false;
-validate('abc123').match(/^d.*6$/).ok === false;
+validate('abc123').match(/\s/, /def456/).errors[0].details
+// -->
+{
+    string: 'abc123',
+    patterns: ['/\\s/', '/def456/'...],
+    match: false,
+    message: '"abc123" don't match any of ["/\\\\s/", "//def456"...]'
+}
 ```
 
 # Contribute
