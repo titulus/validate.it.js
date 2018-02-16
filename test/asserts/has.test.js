@@ -18,7 +18,7 @@ describe('asserts/has', () => {
     it('on set (all not present)', () => expect(has('abc123', 'e', 4, 'd2')).to.be.ok);
   });
 
-  describe('returned object', () => {
+  describe('returned', () => {
     it('.string', () => expect(has('abc123', 'e').string).to.equal('abc123'));
     it('.subStrings', () => {
       const result = has('abc123', 'e', 4, 'd2');

@@ -15,7 +15,7 @@ describe('asserts/hasNumbers', () => {
     it('on NaN', () => expect(hasNumbers(NaN)).to.be.ok);
   });
 
-  describe('returned object', () => {
+  describe('returned', () => {
     it('.string', () => expect(hasNumbers('abc').string).to.equal('abc'));
     it('.subStrings', () => {
       const result = hasNumbers('abc');

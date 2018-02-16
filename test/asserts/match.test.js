@@ -18,7 +18,7 @@ describe('asserts/match', () => {
     it('on set (all not present)', () => expect(match('abc123', /\s/, /^d.*6$/, /def456/)).to.be.ok);
   });
 
-  describe('returned object', () => {
+  describe('returned', () => {
     it('.string', () => expect(match('abc123', /\s/).string).to.equal('abc123'));
     it('.patterns', () => {
       const result = match('abc123', /\s/, /def456/);

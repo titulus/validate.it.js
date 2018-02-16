@@ -18,7 +18,7 @@ describe('asserts/hasNo', () => {
     it('on set (one of present)', () => expect(hasNo('abc123', 'b', 4)).to.be.ok);
   });
 
-  describe('returned object', () => {
+  describe('returned', () => {
     it('.string', () => expect(hasNo('abc123', 'b').string).to.equal('abc123'));
     it('.subStrings', () => {
       const result = hasNo('abc123', 'b', 2, 'c1');

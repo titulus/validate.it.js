@@ -16,7 +16,7 @@ describe('asserts/hasLettersLatin', () => {
     it('on no-latin', () => expect(hasLettersLatin('абв')).to.be.ok);
   });
 
-  describe('returned object', () => {
+  describe('returned', () => {
     it('.string', () => expect(hasLettersLatin('абв123').string).to.equal('абв123'));
     it('.subStrings', () => {
       const result = hasLettersLatin('абв123');
