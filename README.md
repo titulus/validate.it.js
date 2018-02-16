@@ -117,7 +117,7 @@ Example
 ## Asserts
 
 * [.has( subString [, subString2...] )](#has) - Check that any `subString` present in `base`.
-* [.hasNo( pattern [, pattern2...] )](#hasno) - Check that any `subString` unpresent in `base`.
+* [.hasNo( subString [, subString2...] )](#hasno) - Check that any `subString` unpresent in `base`.
 * [.hasNumbers()](#hasNumbers) - Check that any **number** present in `base`.
 * [.hasLettersLatin()](#hasLettersLatin) - Check that any **latin letter** present in `base`.
 * [.match( regexp [, regexp2...] )](#match) - Check `base` for matching any `regexp`.
