@@ -1,4 +1,10 @@
 node_modules
+
+asserts
+lib
 test
 
 package-lock.json
+webpack.config.js
+
+.eslintrc
