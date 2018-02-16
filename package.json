@@ -2,6 +2,13 @@
   "name": "validate.it.js",
   "version": "0.1.1",
   "description": "simple way to validate",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/titulus/validate.it.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/titulus/validate.it.js/issues"
+  },
   "main": "index.js",
   "scripts": {
     "start": "webpack",
