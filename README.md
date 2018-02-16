@@ -117,6 +117,8 @@ Example
 
 * [.has( subString [, subString2...] )](#has) - Check that any `subString` present in `base`.
 * [.hasNo( pattern [, pattern2...] )](#hasno) - Check that any `subString` unpresent in `base`.
+* [.hasNumbers()](#hasNumbers) - Check that any **number** present in `base`.
+* [.hasLettersLatin()](#hasLettersLatin) - Check that any **latin letter** present in `base`.
 * [.match( regexp [, regexp2...] )](#match) - Check `base` for matching any `regexp`.
 
 ### .has
@@ -181,7 +183,66 @@ validate('abc123').has('a','b','c').errors[0].details
     message: 'every of ["a", "b", "c"] found in "abc123"'
 }
 ```
+### .hasNumbers
+Check that any **number** present in `base`.
 
+Syntax:
+```js
+.hasNumbers()
+```
+Fail details:
+```js
+{
+    string: base,
+    subStrings: ["1","2","3","4","5","6","7","8","9","0"],
+    found: false,
+    message: '"base" has no numbers'
+}
+```
+Examples:
+```js
+validate('abc123').hasNumbers().ok === true;
+
+validate('abc').hasNumbers().ok === false;
+validate('abc').hasNumbers().errors[0].details
+// -->
+{
+    string: 'abc',
+    subStrings: ["1","2","3","4","5","6","7","8","9","0"],
+    found: false,
+    message: '"abc" has no numbers'
+}
+```
+### .hasLettersLatin
+Check that any **latin letter** present in `base`.
+
+Syntax:
+```js
+.hasLettersLatin()
+```
+Fail details:
+```js
+{
+    string: base,
+    subStrings: ["a","b","c", ... "X","Y","Z"],
+    found: false,
+    message: '"base" has no latin letters'
+}
+```
+Examples:
+```js
+validate('abc123').hasLettersLatin().ok === true;
+
+validate('123').hasLettersLatin().ok === false;
+validate('123').hasLettersLatin().errors[0].details
+// -->
+{
+    string: '123',
+    subStrings: ["a","b","c", ... "X","Y","Z"],
+    found: false,
+    message: '"123" has no latin letters'
+}
+```
 ### .match
 Check `base` for matching any `regexp`.
 
