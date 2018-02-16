@@ -195,7 +195,7 @@ Fail details:
     string: base,
     patterns: ['pattern', 'pattern2'...],
     match: false,
-    message: '"base" don't match any of ["pattern", "pattern2"...]'
+    message: '"base" don\'t match any of ["pattern", "pattern2"...]'
 }
 ```
 Examples:
@@ -210,7 +210,7 @@ validate('abc123').match(/\s/, /def456/).errors[0].details
     string: 'abc123',
     patterns: ['/\\s/', '/def456/'...],
     match: false,
-    message: '"abc123" don't match any of ["/\\\\s/", "//def456"...]'
+    message: '"abc123" don\'t match any of ["/\\\\s/", "//def456"...]'
 }
 ```
 
