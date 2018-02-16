@@ -53,6 +53,11 @@ describe('runAssertAsMethod', () => {
       const _this3 = {asserts: [], errors: [], ok: true};
       methodReturnsFalse.call(_this3);
       expect(_this3.ok).to.be.false;
+
+      const methodReturnsNull = runAssertAsMethod('testAssert', () => null);
+      const _this4 = {asserts: [], errors: [], ok: true};
+      methodReturnsNull.call(_this4);
+      expect(_this4.ok).to.be.false;
     });
     it('should push validation report to this.errors', () => {
       const method = runAssertAsMethod('testAssert', () => true);
