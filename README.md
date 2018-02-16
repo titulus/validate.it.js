@@ -4,12 +4,24 @@ validate.it.js
 *Simple way to validate*
 
 # Installation
+install from npmjs
 ```bash
 npm install --save validate.it.js
 ```
+and import in preffered style
 ```js
-import validate from 'validate.it.js'
+import validate from 'validate.it.js';
 ```
+```js
+const validate = require('validate.it.js');
+```
+
+Or just download last version from [releases page](https://github.com/titulus/validate.it.js/releases)
+and add script tag in end of body
+```html
+<script src="/validate.it.js"></script>
+```
+`validate` variable will be in global scope
 
 # Usage
 Give him a string and call needed asserts
@@ -310,4 +322,4 @@ validate('hello').hasSmile().errors[0].details;
 # Contribute
 You know another usefull assert? Fill free to pull request here.
 
-Check the [Contributers guide](https://github.com/titulus/validate.it/blob/master/CONTRIBUTING.md)
+Check the [Contributers guide](https://github.com/titulus/validate.it.js/blob/master/CONTRIBUTING.md)
