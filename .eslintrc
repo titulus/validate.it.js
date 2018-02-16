@@ -1,3 +1,21 @@
 {
-  "extends": "airbnb"
+  "extends":"eslint:recommended",
+  "env": {
+    "amd": true,
+    "es6": true
+  },
+  "globals": {
+    "module": false,
+    "describe": false,
+    "it": false
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "rules": {
+    "curly": "error"
+  }
 }
