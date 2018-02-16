@@ -103,11 +103,12 @@ Example
 ```js
 {
   path: [],
-  rule: 'longerThan',
+  rule: 'hasNumbers',
   details: {
-    length: 4,
-    min: 5,
-    message: 'less than 5 chars'
+    string: 'bob',
+    subStrings: [1,2,3,4,5,6,7,8,9],
+    found: false,
+    message: '"bob" has no numbers'
   }
 }
 ```
@@ -140,7 +141,9 @@ validate('abc123').has('a').ok === true;
 validate('abc123').has('c1','e4').ok === true;
 
 validate('abc123').has('d').ok === false;
-validate('abc123').has('e2','e4').errors[0].details -- {
+validate('abc123').has('e2','e4').errors[0].details
+// -->
+{
     string: 'abc123',
     subStrings: ['e2','e4'],
     found: false,
