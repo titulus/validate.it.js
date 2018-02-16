@@ -246,10 +246,14 @@ Syntax:
 ```
 Any return of `func` (except of `undefined`) will be converted into `details` object and wrapped with [Validation Report](#validation-report). Simple strings will be placed as `.message` property:
 > `'no smiles found' -> {mesage: 'no smiles found'}`
+
 other results will be converted as is:
 > `{a: 1, b: '2'} -> {a: 1, b: '2'}`
+
 > `[1, 2, 3] -> {0: 1, 1: 2, 2: 3}`
+
 > `true -> {}`
+
 > `Function -> {}`
 
 Examples:
