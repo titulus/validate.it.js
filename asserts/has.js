@@ -1,5 +1,3 @@
-const match = require('./match.js');
-
 module.exports = (base, ...subStrings) => {
   if (subStrings.length === 0)
     throw new Error('at least 1 substring must be specified');
