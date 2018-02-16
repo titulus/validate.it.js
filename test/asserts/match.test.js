@@ -16,4 +16,11 @@ describe('asserts/match', () => {
     it('on ^d.*6$', () => expect(match('abc123', /^d.*6$/)).to.be.ok);
     it('on def456', () => expect(match('abc123', /def456/)).to.be.ok);
   });
+
+  describe('returned object', () => {
+    it('.string', () => expect(match('abc123', /\s/).string).to.equal('abc123'));
+    it('.pattern', () => expect(match('abc123', /\s/).pattern).to.equal('/\\s/'));
+    it('.match === false', () => expect(match('abc123', /\s/).match).to.be.false);
+    it('.message', () => expect(match('abc123', /\s/).message).to.be.ok);
+  });
 });

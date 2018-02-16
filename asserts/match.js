@@ -1,10 +1,11 @@
 module.exports = (base, regexp) => {
   if (!regexp)
     throw new Error('regexp must be specified');
-  const valid = regexp.test('' + base);
+  const string = '' + base;
+  const valid = regexp.test(string);
   if (!valid)
     return {
-      string: base,
+      string,
       pattern: '' + regexp,
       match: false,
       message: `"${base}" don't match ${regexp}`,
