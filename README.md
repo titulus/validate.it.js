@@ -108,26 +108,38 @@ Example
 
 ## Asserts
 
-* [.has( pattern )](#has) - Check that `pattern` present in `base`.
-* [.hasNo( pattern )](#hasno) - Check that `pattern` not present in `base`.
+* [.has( subString [, subString2...] )](#has) - Check that any `subString` present in `base`.
+* [.hasNo( pattern [, pattern2...] )](#hasno) - Check that `pattern` not present in `base`.
 * [.match( regexp )](#match) - Check `base` for matching `regexp`.
 
 ### .has
-```js
-.has( pattern )
-```
-Check that `pattern` present in `base`.
-* `pattern` - just regexp pattern. So you can use as pattern`'a'`, `'1'`, `'\\d'`, `[a-z]` etc.
+Check that any `subString` present in `base`.
 
-examples
+Syntax:
+```js
+.has( subString [, subString2...] )
+```
+Fail details:
+```js
+{
+    string: base,
+    subStrings: [subString, subString2...],
+    found: false,
+    message: 'not any of ["subString", "subString2"...] found in "base"'
+}
+```
+Examples:
 ```js
 validate('abc123').has('a').ok === true;
-validate('abc123').has('c1').ok === true;
-validate('abc123').has('\\d').ok === true;
+validate('abc123').has('c1','e4').ok === true;
 
 validate('abc123').has('d').ok === false;
-validate('abc123').has('a1').ok === false;
-validate('abc123').has('\\s').ok === false;
+validate('abc123').has('e2','e4').details -- {
+    string: 'abc123',
+    subStrings: ['e2','e4'],
+    found: false,
+    message: 'not any of ["e2", "e4"] found in "abc123"'
+}
 ```
 ### .hasNo
 ```js
