@@ -15,35 +15,36 @@ import validate from 'validate.it'
 Give him a string and call needed asserts
 ```js
 validate('Pa$$w0rd')
-  .longerThan(5)
-  .lessThan(100)
-  .hasNumbers();
+  .hasLettersLatin()
+  .hasNumbers()
+  .has("!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+");
 // -->
 {
   ok: true,
   base: 'Pa$$w0rd',
-  asserts: ['longerThan', 'lessThan', 'hasNumbers'],
+  asserts: ['hasLettersLatin', 'hasNumbers', 'has'],
   errors: []
 }
 ```
 
 ```js
 validate('bob')
-  .longerThan(5)
-  .lessThan(100);
+  .hasLettersLatin()
+  .hasNumbers();
 // -->
 {
   ok: false,
   base: 'bob',
-  asserts: ['longerThan', 'lessThan'],
+  asserts: ['hasLettersLatin', 'hasNumbers'],
   errors: [
     {
       path: [],
-      rule: 'longerThan',
+      rule: 'hasNumbers',
       details: {
-        length: 4,
-        min: 5,
-        message: 'less than 5 chars'
+        string: 'bob',
+        subStrings: [1,2,3,4,5,6,7,8,9],
+        found: false,
+        message: '"bob" has no numbers'
       }
     }
   ]
@@ -56,9 +57,14 @@ validate('bob')
 ```js
 result = validation( base )
   .assert()
-  .anotherAssert( argument );
+  .anotherAssert( argument )
+  .yetAnotherAssert( set, of, arguments );
 ```
-> Note. All asserts combined in **AND** logic way. So if any of asserts fails - validation fails
+> **Note**
+>
+> Asserts combined in **AND** logic way. So if any of asserts fails - validation fails.
+>
+> Arguments in assert combined in **OR** logic way. So if any of arguments satisfies assert - assert passes.
 
 * **Assert** is a step of validation process. It checks `base` by specified rule.
 * **Result** is a *result* of validation in clean readable format.
@@ -97,37 +103,52 @@ Example
 ```js
 {
   path: [],
-  rule: 'longerThan',
+  rule: 'hasNumbers',
   details: {
-    length: 4,
-    min: 5,
-    message: 'less than 5 chars'
+    string: 'bob',
+    subStrings: [1,2,3,4,5,6,7,8,9],
+    found: false,
+    message: '"bob" has no numbers'
   }
 }
 ```
 
 ## Asserts
 
-* [.has( pattern )](#has) - Check that `pattern` present in `base`.
-* [.hasNo( pattern )](#hasno) - Check that `pattern` not present in `base`.
+* [.has( subString [, subString2...] )](#has) - Check that any `subString` present in `base`.
+* [.hasNo( pattern [, pattern2...] )](#hasno) - Check that `pattern` not present in `base`.
 * [.match( regexp )](#match) - Check `base` for matching `regexp`.
 
 ### .has
-```js
-.has( pattern )
-```
-Check that `pattern` present in `base`.
-* `pattern` - just regexp pattern. So you can use as pattern`'a'`, `'1'`, `'\\d'`, `[a-z]` etc.
+Check that any `subString` present in `base`.
 
-examples
+Syntax:
+```js
+.has( subString [, subString2...] )
+```
+Fail details:
+```js
+{
+    string: base,
+    subStrings: [subString, subString2...],
+    found: false,
+    message: 'not any of ["subString", "subString2"...] found in "base"'
+}
+```
+Examples:
 ```js
 validate('abc123').has('a').ok === true;
-validate('abc123').has('c1').ok === true;
-validate('abc123').has('\\d').ok === true;
+validate('abc123').has('c1','e4').ok === true;
 
 validate('abc123').has('d').ok === false;
-validate('abc123').has('a1').ok === false;
-validate('abc123').has('\\s').ok === false;
+validate('abc123').has('e2','e4').errors[0].details
+// -->
+{
+    string: 'abc123',
+    subStrings: ['e2','e4'],
+    found: false,
+    message: 'not any of ["e2", "e4"] found in "abc123"'
+}
 ```
 ### .hasNo
 ```js
