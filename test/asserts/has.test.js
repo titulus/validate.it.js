@@ -23,7 +23,7 @@ describe('asserts/has', () => {
     it('.subStrings', () => {
       const result = has('abc123', 'e', 4, 'd2');
       expect(result).to.have.ownPropertyDescriptor('subStrings');
-      expect(JSON.stringify(result.subStrings)).to.equal('["e",4,"d2"]');
+      expect(JSON.stringify(result.subStrings)).to.equal('["e","4","d2"]');
     });
     it('.found === false', () => expect(has('abc123', 'e').found).to.be.false);
     it('.message', () => expect(has('abc123', 'e').message).to.be.ok);
