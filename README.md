@@ -143,14 +143,7 @@ validate('abc123').has('a').ok === true;
 validate('abc123').has('c1','e4').ok === true;
 
 validate('abc123').has('d').ok === false;
-validate('abc123').has('e2','e4').errors[0].details
-// -->
-{
-    string: 'abc123',
-    subStrings: ['e2','e4'],
-    found: false,
-    message: 'not any of ["e2", "e4"] found in "abc123"'
-}
+validate('abc123').has('e2','e4').ok === false;
 ```
 ### .hasNo
 Check that any `subString` unpresent in `base`.
@@ -174,14 +167,7 @@ validate('abc123').has('e').ok === true;
 validate('abc123').has('c1','e4').ok === true;
 
 validate('abc123').has('b').ok === false;
-validate('abc123').has('a','b','c').errors[0].details
-// -->
-{
-    string: 'abc123',
-    subStrings: ['a','b','c'],
-    found: true,
-    message: 'every of ["a", "b", "c"] found in "abc123"'
-}
+validate('abc123').has('a','b','c').ok === false;
 ```
 ### .hasNumbers
 Check that any **number** present in `base`.
@@ -204,14 +190,6 @@ Examples:
 validate('abc123').hasNumbers().ok === true;
 
 validate('abc').hasNumbers().ok === false;
-validate('abc').hasNumbers().errors[0].details
-// -->
-{
-    string: 'abc',
-    subStrings: ["1","2","3","4","5","6","7","8","9","0"],
-    found: false,
-    message: '"abc" has no numbers'
-}
 ```
 ### .hasLettersLatin
 Check that any **latin letter** present in `base`.
@@ -234,14 +212,6 @@ Examples:
 validate('abc123').hasLettersLatin().ok === true;
 
 validate('123').hasLettersLatin().ok === false;
-validate('123').hasLettersLatin().errors[0].details
-// -->
-{
-    string: '123',
-    subStrings: ["a","b","c", ... "X","Y","Z"],
-    found: false,
-    message: '"123" has no latin letters'
-}
 ```
 ### .match
 Check `base` for matching any `regexp`.
@@ -265,14 +235,7 @@ validate('abc123').match(/\d/).ok === true;
 validate('abc123').match(/^a.*3$/).ok === true;
 
 validate('abc123').match(/\s/).ok === false;
-validate('abc123').match(/\s/, /def456/).errors[0].details
-// -->
-{
-    string: 'abc123',
-    patterns: ['/\\s/', '/def456/'...],
-    match: false,
-    message: '"abc123" don\'t match any of ["/\\\\s/", "//def456"...]'
-}
+validate('abc123').match(/\s/, /def456/).ok === false;
 ```
 
 # Contribute
