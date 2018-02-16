@@ -42,7 +42,7 @@ validate('bob')
       rule: 'hasNumbers',
       details: {
         string: 'bob',
-        subStrings: [1,2,3,4,5,6,7,8,9],
+        subStrings: ["1","2","3","4","5","6","7","8","9","0"],
         found: false,
         message: '"bob" has no numbers'
       }
@@ -106,7 +106,7 @@ Example
   rule: 'hasNumbers',
   details: {
     string: 'bob',
-    subStrings: [1,2,3,4,5,6,7,8,9],
+    subStrings: ["1","2","3","4","5","6","7","8","9","0"],
     found: false,
     message: '"bob" has no numbers'
   }
