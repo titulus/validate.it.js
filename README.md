@@ -76,7 +76,9 @@ result = validation( base )
 >
 > Asserts combined in **AND** logic way. So if any of asserts fails - validation fails.
 >
-> Arguments in assert combined in **OR** logic way. So if any of arguments satisfies assert - assert passes.
+> Mostly: Arguments in assert combined in **OR** logic way. So if any of arguments satisfies assert - assert passes.
+>
+> Mostly: Values in Array as assert argument combined in **AND** logic way.
 
 * [**Result**](#result) - *result* of validation in clean readable format.
 * [**Assert**](#asserts) - step of validation process. It checks `base` by specified rule.
