@@ -75,17 +75,13 @@ result = validation( base )
 > **Note**
 >
 > Asserts combined in **AND** logic way. So if any of asserts fails - validation fails.
->
-> Mostly: Arguments in assert combined in **OR** logic way. So if any of arguments satisfies assert - assert passes.
->
-> Mostly: Values in Array as assert argument combined in **AND** logic way.
 
 * [**Result**](#result) - *result* of validation in clean readable format.
 * [**Assert**](#asserts) - step of validation process. It checks `base` by specified rule.
 * [**.extend**](#extend) - static method allows you to add your own asserts.
 
 ## Result
-`result` is just a [DTO](https://en.wikipedia.org/wiki/Data_transfer_object) with params:
+`result` is just an object with params:
 * `ok` *bool* - status of validation
   * `true` - validation passed
   * `false` - validation fails
