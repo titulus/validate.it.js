@@ -133,6 +133,7 @@ Example
 * [.match( regexp [, regexp2...] )](#match) - Check `base` for matching any `regexp`.
 * [.length( lengthRequired )](#length) - Check that length of `base` is equal to `lengthRequired`.
 * [.lessThan( lengthBeyond )](#lessthan) - Check that length of `base` is less than `lengthBeyond`.
+* [.longerThan( lengthBeyond )](#longerthan) - Check that length of `base` is longer than `lengthBeyond`.
 * [.eval( assert )](#eval) - Calls function `assert` with `base` as only argument. Fails if it returns something.
 
 ### .has
@@ -300,6 +301,30 @@ validate('').lessThan(1).ok === true;
 
 validate('abc').lessThan(3).ok === false;
 validate('abc123').lessThan(3).ok === false;
+```
+### .longerThan
+Check that length of `base` is longer than `lengthBeyond`.
+
+Syntax:
+```js
+.longerThan( lengthBeyond )
+```
+Fail details:
+```js
+{
+    string: base,
+    length: 4,
+    lengthBeyond: 5,
+    message: 'length of "base" is not longer than 5'
+}
+```
+Examples:
+```js
+validate('abc').longerThan(2).ok === true;
+validate('abc').longerThan(0).ok === true;
+
+validate('abc').longerThan(3).ok === false;
+validate('abc').longerThan(5).ok === false;
 ```
 ### .eval
 Calls function `assert` with `base` as only argument. Fails if it returns something.
