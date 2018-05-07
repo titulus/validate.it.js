@@ -6,4 +6,7 @@ module.exports = {
   hasNo: require('./hasNo'),
   hasNumbers: require('./hasNumbers'),
   hasLettersLatin: require('./hasLettersLatin'),
+  length: require('./length'),
+  lessThan: require('./lessThan'),
+  longerThan: require('./longerThan'),
 };
