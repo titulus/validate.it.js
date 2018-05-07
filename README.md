@@ -128,9 +128,12 @@ Example
 
 * [.has( subString [, subString2...] )](#has) - Check that any `subString` present in `base`.
 * [.hasNo( subString [, subString2...] )](#hasno) - Check that any `subString` unpresent in `base`.
-* [.hasNumbers()](#hasNumbers) - Check that any **number** present in `base`.
-* [.hasLettersLatin()](#hasLettersLatin) - Check that any **latin letter** present in `base`.
+* [.hasNumbers()](#hasnumbers) - Check that any **number** present in `base`.
+* [.hasLettersLatin()](#hasletterslatin) - Check that any **latin letter** present in `base`.
 * [.match( regexp [, regexp2...] )](#match) - Check `base` for matching any `regexp`.
+* [.length( lengthRequired )](#length) - Check that length of `base` is equal to `lengthRequired`.
+* [.lessThan( lengthBeyond )](#lessthan) - Check that length of `base` is less than `lengthBeyond`.
+* [.longerThan( lengthBeyond )](#longerthan) - Check that length of `base` is longer than `lengthBeyond`.
 * [.eval( assert )](#eval) - Calls function `assert` with `base` as only argument. Fails if it returns something.
 
 ### .has
@@ -248,6 +251,80 @@ validate('abc123').match(/^a.*3$/).ok === true;
 
 validate('abc123').match(/\s/).ok === false;
 validate('abc123').match(/\s/, /def456/).ok === false;
+```
+### .length
+Check that length of `base` is equal to `lengthRequired`.
+
+Syntax:
+```js
+.length( lengthRequired )
+```
+Fail details:
+```js
+{
+    string: base,
+    length: 4,
+    lengthRequired: 3,
+    message: 'length of "base" is not equal to 3'
+}
+```
+Examples:
+```js
+validate('abc').length(3).ok === true;
+validate('').length(0).ok === true;
+
+validate('abc').length(4).ok === false;
+validate('abc123').length(3).ok === false;
+```
+### .lessThan
+Check that length of `base` is less than `lengthBeyond`.
+
+Syntax:
+```js
+.lessThan( lengthBeyond )
+```
+> *Notice:* `lengthBeyond` must be a **positive** Number
+
+Fail details:
+```js
+{
+    string: base,
+    length: 4,
+    lengthBeyond: 3,
+    message: 'length of "base" is not less than 3'
+}
+```
+Examples:
+```js
+validate('abc').lessThan(4).ok === true;
+validate('').lessThan(1).ok === true;
+
+validate('abc').lessThan(3).ok === false;
+validate('abc123').lessThan(3).ok === false;
+```
+### .longerThan
+Check that length of `base` is longer than `lengthBeyond`.
+
+Syntax:
+```js
+.longerThan( lengthBeyond )
+```
+Fail details:
+```js
+{
+    string: base,
+    length: 4,
+    lengthBeyond: 5,
+    message: 'length of "base" is not longer than 5'
+}
+```
+Examples:
+```js
+validate('abc').longerThan(2).ok === true;
+validate('abc').longerThan(0).ok === true;
+
+validate('abc').longerThan(3).ok === false;
+validate('abc').longerThan(5).ok === false;
 ```
 ### .eval
 Calls function `assert` with `base` as only argument. Fails if it returns something.
