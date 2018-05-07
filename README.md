@@ -131,6 +131,7 @@ Example
 * [.hasNumbers()](#hasNumbers) - Check that any **number** present in `base`.
 * [.hasLettersLatin()](#hasLettersLatin) - Check that any **latin letter** present in `base`.
 * [.match( regexp [, regexp2...] )](#match) - Check `base` for matching any `regexp`.
+* [.length( lengthRequired )](#length) - Check that length of `base` is equal to `lengthRequired`.
 * [.eval( assert )](#eval) - Calls function `assert` with `base` as only argument. Fails if it returns something.
 
 ### .has
@@ -248,6 +249,30 @@ validate('abc123').match(/^a.*3$/).ok === true;
 
 validate('abc123').match(/\s/).ok === false;
 validate('abc123').match(/\s/, /def456/).ok === false;
+```
+### .length
+Check that length of `base` is equal to `lengthRequired`.
+
+Syntax:
+```js
+.length( lengthRequired )
+```
+Fail details:
+```js
+{
+    string: base,
+    length: 4,
+    lengthRequired: 3,
+    message: 'length of "base" is not equal to 3'
+}
+```
+Examples:
+```js
+validate('abc').length(3).ok === true;
+validate('').length(0).ok === true;
+
+validate('abc').length(4).ok === false;
+validate('abc123').length(3).ok === false;
 ```
 ### .eval
 Calls function `assert` with `base` as only argument. Fails if it returns something.
