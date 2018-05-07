@@ -128,11 +128,11 @@ Example
 
 * [.has( subString [, subString2...] )](#has) - Check that any `subString` present in `base`.
 * [.hasNo( subString [, subString2...] )](#hasno) - Check that any `subString` unpresent in `base`.
-* [.hasNumbers()](#hasNumbers) - Check that any **number** present in `base`.
-* [.hasLettersLatin()](#hasLettersLatin) - Check that any **latin letter** present in `base`.
+* [.hasNumbers()](#hasnumbers) - Check that any **number** present in `base`.
+* [.hasLettersLatin()](#hasletterslatin) - Check that any **latin letter** present in `base`.
 * [.match( regexp [, regexp2...] )](#match) - Check `base` for matching any `regexp`.
 * [.length( lengthRequired )](#length) - Check that length of `base` is equal to `lengthRequired`.
-* [.lessThan( lengthBeyond )](#lessThan) - Check that length of `base` is less than `lengthBeyond`.
+* [.lessThan( lengthBeyond )](#lessthan) - Check that length of `base` is less than `lengthBeyond`.
 * [.eval( assert )](#eval) - Calls function `assert` with `base` as only argument. Fails if it returns something.
 
 ### .has
